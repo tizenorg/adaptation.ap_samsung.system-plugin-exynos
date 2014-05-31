@@ -1,0 +1,9 @@
+[Unit]
+Description=Compressed locale directory (/usr/share/locale)
+ConditionFileNotEmpty=/usr/share/usr_share_locale.squash
+
+[Mount]
+What=/usr/share/usr_share_locale.squash
+Where=/usr/share/locale
+Type=squashfs
+Options=loop,ro

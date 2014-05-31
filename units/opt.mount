@@ -1,0 +1,11 @@
+[Unit]
+DefaultDependencies=no
+Before=local-fs.target
+After=local-fs-pre.target
+
+[Mount]
+What=/dev/disk/by-partlabel/system-data
+Where=/opt
+Type=ext4
+Options=errors=panic,nosuid
+

@@ -1,0 +1,10 @@
+[Unit]
+DefaultDependencies=no
+Before=local-fs.target
+After=local-fs-pre.target
+
+[Mount]
+What=/dev/disk/by-partlabel/csc
+Where=/opt/system/csc
+Type=ext4
+Options=defaults,ro,nosuid

@@ -1,0 +1,11 @@
+[Unit]
+DefaultDependencies=no
+ConditionPathExists=!/opt/etc/.odeprogress
+Before=local-fs.target
+After=local-fs-pre.target
+
+[Mount]
+What=/dev/disk/by-partlabel/user
+Where=/opt/usr
+Type=ext4
+Options=errors=panic,nosuid

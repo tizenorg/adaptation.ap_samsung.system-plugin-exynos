@@ -1,0 +1,29 @@
+ACTION!="add", GOTO="system_plugin_end"
+
+# video
+KERNEL=="s3c-jpeg", GROUP="video", SECLABEL{smack}="device::camera"
+KERNEL=="s5p-jpeg", GROUP="video", SECLABEL{smack}="device::camera"
+KERNEL=="s3c-jpg", GROUP="video", SECLABEL{smack}="device::camera"
+KERNEL=="srp", GROUP="video", SECLABEL{smack}="*"
+KERNEL=="s3c-mfc", GROUP="video", SECLABEL{smack}="device::hwcodec"
+KERNEL=="s5p-mfc", GROUP="video", SECLABEL{smack}="*"
+KERNEL=="tzmem", GROUP="video", SECLABEL{smack}="device::hwcodec"
+
+KERNEL=="video[0-9]", GROUP="video", SECLABEL{smack}="device::video"
+KERNEL=="video1", GROUP="video", SECLABEL{smack}="device::camera"
+KERNEL=="video[6-7]", GROUP="video", SECLABEL{smack}="device::hwcodec"
+KERNEL=="video11", GROUP="video", SECLABEL{smack}="device::hwcodec"
+KERNEL=="video12", GROUP="video", SECLABEL{smack}="device::hwcodec"
+
+KERNEL=="ump", GROUP="video", SECLABEL{smack}="*"
+KERNEL=="mali", GROUP="video", SECLABEL{smack}="*"
+KERNEL=="slp_global_lock", GROUP="video", SECLABEL{smack}="*"
+
+# nfc
+KERNEL=="felica", MODE="0666", SECLABEL{smack}="device::nfc"
+KERNEL=="felica_pon", MODE="0666", SECLABEL{smack}="device::nfc"
+KERNEL=="felica_cen", MODE="0666", SECLABEL{smack}="device::nfc"
+KERNEL=="felica_ant", MODE="0666", SECLABEL{smack}="device::nfc"
+KERNEL=="felica_uid", MODE="0222", SECLABEL{smack}="device::nfc"
+
+LABEL="system_plugin_end"
