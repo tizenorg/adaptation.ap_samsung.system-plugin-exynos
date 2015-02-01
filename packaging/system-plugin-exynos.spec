@@ -65,11 +65,16 @@ cat LICENSE > $RPM_BUILD_ROOT%{_datadir}/license/%{name}
 %{_datadir}/license/%{name}
 %{_sysconfdir}/fstab
 %{_bindir}/cpu-governor.sh
+%{_bindir}/resize2fs_by_partlabel.sh
 %{_libdir}/udev/rules.d/51-tizen-system-plugin.rules
 
 # systemd service units
 %{_libdir}/systemd/system/cpu-governor.service
 %{_libdir}/systemd/system/default.target.wants/cpu-governor.service
+%{_libdir}/systemd/system/fsck@.service
+%{_libdir}/systemd/system/resize2fs@.service
+%{_libdir}/systemd/system/resize2fs-root.service
+%{_libdir}/systemd/system/local-fs.target.wants/resize2fs-root.service
 
 # systemd mount units
 %{_libdir}/systemd/system/usr-share-locale.mount

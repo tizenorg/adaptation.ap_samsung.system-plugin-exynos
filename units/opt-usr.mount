@@ -1,8 +1,10 @@
 [Unit]
+Description=Mount to /opt/usr
 DefaultDependencies=no
 ConditionPathExists=!/opt/etc/.odeprogress
 Before=local-fs.target
-After=local-fs-pre.target
+After=local-fs-pre.target fsck@dev-disk-by\x2dpartlabel-user.service resize2fs@dev-disk-by\x2dpartlabel-user.service
+Wants=resize2fs@dev-disk-by\x2dpartlabel-user.service
 
 [Mount]
 What=/dev/disk/by-partlabel/user

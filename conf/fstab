@@ -24,5 +24,4 @@ tmpfs                   /tmp                    tmpfs   comment=havefs-smackfs-s
 
 # For new partition - 2012/06/26 add csa partition.
 /dev/disk/by-partlabel/rootfs   /               ext4    ro              0       1
-/dev/disk/by-partlabel/system-data      /opt            ext4    errors=panic,nosuid    0       2
-/dev/disk/by-partlabel/user     /opt/usr        ext4    errors=panic,nofail,nosuid     0       2
+/dev/disk/by-partlabel/module   /lib/modules    ext4    ro              0       2

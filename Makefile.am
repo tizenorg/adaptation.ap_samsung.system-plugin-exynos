@@ -83,7 +83,8 @@ INSTALL_EXEC_HOOKS += \
 	install-target-wants-hook
 
 bin_SCRIPTS += \
-	scripts/cpu-governor.sh
+	scripts/cpu-governor.sh \
+	scripts/resize2fs_by_partlabel.sh
 
 sysconf_DATA += \
 	conf/fstab
@@ -101,10 +102,14 @@ endif
 
 systemunit_DATA += \
 	units/usr-share-locale.mount \
-	units/cpu-governor.service
+	units/fsck@.service \
+	units/resize2fs@.service \
+	units/cpu-governor.service \
+	units/resize2fs-root.service
 
 LOCAL_FS_TARGET_WANTS += \
-	usr-share-locale.mount
+	usr-share-locale.mount \
+	resize2fs-root.service
 
 DEFAULT_TARGET_WANTS += \
 	cpu-governor.service

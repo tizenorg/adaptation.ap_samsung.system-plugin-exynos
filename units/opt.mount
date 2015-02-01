@@ -1,7 +1,9 @@
 [Unit]
+Description=Mount to /opt
 DefaultDependencies=no
 Before=local-fs.target
-After=local-fs-pre.target
+After=local-fs-pre.target fsck@dev-disk-by\x2dpartlabel-system\x2ddata.service resize2fs@dev-disk-by\x2dpartlabel-system\x2ddata.service
+Wants=resize2fs@dev-disk-by\x2dpartlabel-system\x2ddata.service
 
 [Mount]
 What=/dev/disk/by-partlabel/system-data
