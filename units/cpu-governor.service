@@ -1,0 +1,7 @@
+[Unit]
+Description=set cpu governor
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cpu-governor.sh

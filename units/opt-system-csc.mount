@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount to /opt/system/csc
+DefaultDependencies=no
+Before=local-fs.target
+After=local-fs-pre.target fsck@dev-disk-by\x2dpartlabel-csc.service resize2fs@dev-disk-by\x2dpartlabel-csc.service
+Wants=resize2fs@dev-disk-by\x2dpartlabel-csc.service
+
+[Mount]
+What=/dev/disk/by-partlabel/csc
+Where=/opt/system/csc
+Type=ext4
+Options=defaults,ro,nosuid
