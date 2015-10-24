@@ -2,9 +2,9 @@
 Description=Resize of File System on %f
 DefaultDependencies=no
 BindsTo=%i.device
-After=fsck@%i.service
-Requires=fsck@%i.service
-Before=local-fs.target shutdown.target
+After=systemd-fsck@%i.service local-fs.target
+Requires=systemd-fsck@%i.service
+Before=shutdown.target
 
 [Service]
 Type=oneshot
@@ -12,3 +12,4 @@ ExecStart=/sbin/resize2fs -f %f
 ExecStartPost=/bin/ln -s /dev/null /etc/systemd/system/resize2fs@%i.service
 StandardOutput=journal+console
 TimeoutSec=0
+SmackProcessLabel=systemd

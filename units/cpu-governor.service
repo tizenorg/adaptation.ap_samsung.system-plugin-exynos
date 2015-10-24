@@ -5,3 +5,4 @@ After=default.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/cpu-governor.sh
+SmackProcessLabel=system-plugin-exynos::script

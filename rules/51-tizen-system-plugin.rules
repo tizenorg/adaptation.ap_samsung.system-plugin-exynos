@@ -26,4 +26,8 @@ KERNEL=="felica_cen", MODE="0666", SECLABEL{smack}="device::nfc"
 KERNEL=="felica_ant", MODE="0666", SECLABEL{smack}="device::nfc"
 KERNEL=="felica_uid", MODE="0222", SECLABEL{smack}="device::nfc"
 
+# telephony
+KERNEL=="umts_boot0", GROUP="system", SECLABEL{smack}="*"
+KERNEL=="umts_ipc0", GROUP="system", SECLABEL{smack}="*"
+
 LABEL="system_plugin_end"

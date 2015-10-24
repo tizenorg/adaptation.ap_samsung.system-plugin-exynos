@@ -29,10 +29,6 @@ Requires: psmisc
 Requires: system-plugin-common
 Requires(post): coreutils
 
-%if ("%{tizen_target_name}" == "B3")
-Excludearch: %arm
-%endif
-
 %description
 Startup files
 
@@ -62,6 +58,11 @@ make %{?_smp_mflags}
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/license
 cat LICENSE > $RPM_BUILD_ROOT%{_datadir}/license/%{name}
 
+mkdir -p %{buildroot}%{_libdir}/systemd/system/basic.target.wants
+ln -s ../resize2fs@.service %{buildroot}%{_libdir}/systemd/system/basic.target.wants/resize2fs@dev-disk-by\\x2dlabel-rootfs.service
+ln -s ../resize2fs@.service %{buildroot}%{_libdir}/systemd/system/basic.target.wants/resize2fs@dev-disk-by\\x2dlabel-system\\x2ddata.service
+ln -s ../resize2fs@.service %{buildroot}%{_libdir}/systemd/system/basic.target.wants/resize2fs@dev-disk-by\\x2dlabel-user.service
+
 %post
 
 %files
@@ -75,10 +76,11 @@ cat LICENSE > $RPM_BUILD_ROOT%{_datadir}/license/%{name}
 # systemd service units
 %{_libdir}/systemd/system/cpu-governor.service
 %{_libdir}/systemd/system/default.target.wants/cpu-governor.service
-%{_libdir}/systemd/system/fsck@.service
 %{_libdir}/systemd/system/resize2fs@.service
-%{_libdir}/systemd/system/resize2fs-root.service
-%{_libdir}/systemd/system/local-fs.target.wants/resize2fs-root.service
+
+%{_libdir}/systemd/system/basic.target.wants/resize2fs@dev-disk-by\x2dlabel-system\x2ddata.service
+%{_libdir}/systemd/system/basic.target.wants/resize2fs@dev-disk-by\x2dlabel-user.service
+%{_libdir}/systemd/system//basic.target.wants/resize2fs@dev-disk-by\x2dlabel-rootfs.service
 
 # systemd mount units
 %{_libdir}/systemd/system/usr-share-locale.mount
@@ -89,11 +91,5 @@ cat LICENSE > $RPM_BUILD_ROOT%{_datadir}/license/%{name}
 %endif
 %{_sysconfdir}/systemd/system/csa.mount
 %{_sysconfdir}/systemd/system/local-fs.target.wants/csa.mount
-%{_sysconfdir}/systemd/system/opt-system-csc.mount
-%{_sysconfdir}/systemd/system/local-fs.target.wants/opt-system-csc.mount
-%{_sysconfdir}/systemd/system/opt-usr.mount
-%{_sysconfdir}/systemd/system/local-fs.target.wants/opt-usr.mount
-%{_sysconfdir}/systemd/system/opt.mount
-%{_sysconfdir}/systemd/system/local-fs.target.wants/opt.mount
 %manifest %{name}.manifest
 

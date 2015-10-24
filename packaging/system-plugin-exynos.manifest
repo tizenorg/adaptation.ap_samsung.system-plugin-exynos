@@ -2,4 +2,8 @@
 	<request>
 		<domain name="_"/>
 	</request>
+	<assign>
+		<filesystem path="/usr/bin/cpu-governor.sh" exec_label="none" />
+		<filesystem path="/usr/bin/resize2fs_by_partlabel.sh" exec_label="none" />
+	</assign>
 </manifest>

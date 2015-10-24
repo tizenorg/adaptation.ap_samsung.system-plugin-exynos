@@ -23,5 +23,7 @@
 tmpfs                   /tmp                    tmpfs   comment=havefs-smackfs-smackfsroot=* 0 0
 
 # For new partition - 2012/06/26 add csa partition.
-/dev/disk/by-partlabel/rootfs   /               ext4    ro              0       1
 /dev/disk/by-partlabel/module   /lib/modules    ext4    ro              0       2
+
+LABEL=system-data               /opt            ext4    defaults,noatime        0       2
+LABEL=user                      /opt/usr        ext4    defaults,noatime        0       2

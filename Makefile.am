@@ -90,9 +90,6 @@ sysconf_DATA += \
 	conf/fstab
 
 systemconfigunit_DATA += \
-	units/opt.mount \
-	units/opt-usr.mount \
-	units/opt-system-csc.mount \
 	units/csa.mount
 
 if WITH_BOOT_PARTITION
@@ -102,22 +99,16 @@ endif
 
 systemunit_DATA += \
 	units/usr-share-locale.mount \
-	units/fsck@.service \
 	units/resize2fs@.service \
-	units/cpu-governor.service \
-	units/resize2fs-root.service
+	units/cpu-governor.service
 
 LOCAL_FS_TARGET_WANTS += \
-	usr-share-locale.mount \
-	resize2fs-root.service
+	usr-share-locale.mount
 
 DEFAULT_TARGET_WANTS += \
 	cpu-governor.service
 
 SYSCONF_LOCAL_FS_TARGET_WANTS += \
-	opt.mount \
-	opt-usr.mount \
-	opt-system-csc.mount \
 	csa.mount
 
 if WITH_BOOT_PARTITION
